@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `OpenSky`.`vehicle` (
   `origin_country` VARCHAR(45) NULL,
   `on_ground` TINYINT NULL,
   `longitude` FLOAT NULL,
-  `longitude` FLOAT NULL,
   `latitude` FLOAT NULL,
+  `velocity` FLOAT NULL,
   `velocity` INT NULL,
-  `user_id` INT NOT NULL,
+  `category` INT NOT NULL,
   
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
