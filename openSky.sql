@@ -17,18 +17,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `OpenSky` DEFAULT CHARACTER SET utf8 ;
 USE `OpenSky` ;
 
--- -----------------------------------------------------
--- Table `OpenSky`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OpenSky`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(16) NOT NULL,
-  `password` VARCHAR(32) NOT NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
-
 
 -- -----------------------------------------------------
 -- Table `OpenSky`.`vehicle`
@@ -47,35 +35,9 @@ CREATE TABLE IF NOT EXISTS `OpenSky`.`vehicle` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `icao24_UNIQUE` (`icao24` ASC) VISIBLE,
-  UNIQUE INDEX `callsign_UNIQUE` (`callsign` ASC) VISIBLE,
-  INDEX `fk_table1_user_idx` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `fk_table1_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `OpenSky`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `callsign_UNIQUE` (`callsign` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `OpenSky`.`favorite`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OpenSky`.`favorite` (
-  `user_id` INT NOT NULL,
-  `vehicle_id` INT NOT NULL,
-  INDEX `fk_favorite_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_favorite_vehicle1_idx` (`vehicle_id` ASC) VISIBLE,
-  CONSTRAINT `fk_favorite_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `OpenSky`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_favorite_vehicle1`
-    FOREIGN KEY (`vehicle_id`)
-    REFERENCES `OpenSky`.`vehicle` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
