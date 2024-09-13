@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `OpenSky`.`vehicle` (
   `longitude` FLOAT NULL,
   `latitude` FLOAT NULL,
   `velocity` FLOAT NULL,
-  `velocity` INT NULL,
   `category` INT NOT NULL,
   
   PRIMARY KEY (`id`),
