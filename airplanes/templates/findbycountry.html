@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<h1>Vehicles</h1>
+<a href="{% url 'index' %}" class="btn btn-primary">Home page</a>
+
+<h1>Found by country {{query}}</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">icao24</th>
+            <th scope="col">origin_country</th>
+            <th scope="col">callsign</th>
+            <th scope="col">on ground</th>
+            <th scope="col">velocity</th>
+            <th scope="col">longitude</th>
+            <th scope="col">latitude</th>
+            <th scope="col">category</th>
+            <th scope="col">read more</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for vehicle in vehicles %}
+        <tr>
+            <th scope="row">{{ vehicle.icao24 }}</th>
+            <td>{{ vehicle.origin_country}}</td>
+            <td>{{ vehicle.callsign}}</td>
+            <td>{{ vehicle.on_ground}}</td>
+            <td>{{ vehicle.velocity}}</td>
+            <td>{{ vehicle.longitude}}</td>
+            <td>{{ vehicle.latitude}}</td>
+            <td>{{ vehicle.category}}</td>
+            <td><a href="{% url 'vehicle_detail' vehicle.pk %}" class="btn btn-primary">Read More</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+
+
+{% endblock %}
+

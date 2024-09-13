@@ -1,0 +1,48 @@
+<!-- projects/templates/projects/project_detail.html -->
+
+{% extends "base.html" %}
+
+{% block page_content %}
+<h1>icao24: {{ vehicle.icao24 }}</h1>
+<br>
+<table class="table">
+    <tbody>
+         <tr>
+             <th width="500">
+<div class="row">
+    <div class="col-md-4">
+        <h5>Country:</h5>
+        <p>{{ vehicle.origin_country }}</p>
+
+        <h5>Vehicle callsign:</h5>
+        <p>{{ vehicle.callsign }}</p>
+        <h5>On ground:</h5>
+        <p>{{ vehicle.on_ground}} (1 - Yes, 0 - No)</p>
+
+        <h5>Velocity:</h5>
+        <p>{{ vehicle.velocity }} m/s</p>
+        <h5>Category:</h5>
+        <p>{{ vehicle.category }}</p>
+
+        <h5>Longitude:</h5>
+        <p>{{ vehicle.longitude }}</p>
+
+        <h5>Latitude:</h5>
+        <p>{{ vehicle.latitude }}</p>
+
+    </div>
+</div>
+             </th>
+              <th>
+           <div style="text-decoration:none; overflow:hidden;max-width:100%;width:500px;height:500px;"><div id="my-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:2;" frameborder="0" src="https://www.google.com/maps/embed/v1/search?q={{ vehicle.latitude }},{{ vehicle.longitude }}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="my-codefor-googlemap" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="grab-maps-authorization">premium bootstrap themes</a><style>#my-map-display .text-marker{}.map-generator{max-width: 100%; max-height: 100%; background: none;</style></div>
+         </th>
+         </tr>
+
+    </tbody>
+</table>
+<a href="{% url 'index' %}" class="btn btn-primary">Home page</a>
+<!--<iframe src="https://www.google.com/maps/search/?api=1&query=-38.0874%2C145.533" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+<!--<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3147.34659376527!2d5.0402250768950605!3d48.14739997124449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDjCsDA4JzUwLjYiTiA1wrAwMiczNC4xIkU!5e1!3m2!1sru!2sru!4v1726046559171!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+{% endblock page_content %}
+
+-38.0874,145.533

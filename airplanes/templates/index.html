@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<h1>All airplanes</h1>
+
+<h1>Find</h1>
+<form action = "{% url 'vehicle_find_icao24' %}" method = "get">
+	<label for="icao24">icao24: </label>
+	<input id="icao24" type="text" name="icao24">
+	<input type="submit" value="Search">
+</form>
+<br>
+<form action = "{% url 'vehicle_find_origin_country' %}" method = "get">
+	<label for="origin_country">origin country: </label>
+	<input id="origin_country" type="text" name="origin_country">
+	<input type="submit" value="Search">
+</form>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">icao24</th>
+            <th scope="col">origin_country</th>
+            <th scope="col">callsign</th>
+            <th scope="col">on ground</th>
+            <th scope="col">velocity</th>
+            <th scope="col">longitude</th>
+            <th scope="col">latitude</th>
+            <th scope="col">category</th>
+            <th scope="col">read more</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for vehicle in page_obj %}
+        <tr>
+            <th scope="row">{{ vehicle.icao24 }}</th>
+            <td>{{ vehicle.origin_country}}</td>
+            <td>{{ vehicle.callsign}}</td>
+            <td>{{ vehicle.on_ground}}</td>
+            <td>{{ vehicle.velocity}}</td>
+            <td>{{ vehicle.longitude}}</td>
+            <td>{{ vehicle.latitude}}</td>
+            <td>{{ vehicle.category}}</td>
+            <td><a href="{% url 'vehicle_detail' vehicle.pk %}" class="btn btn-primary">Read More</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1"> first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last </a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}
+
+<!--<div class="row">-->
+<!--{% for vehicle in vehicles %}-->
+<!--        <div class="card mb-2">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">{{ vehicle.icao24 }}</h5>-->
+<!--                <p class="card-text">{{ vehicle.origin_country}}</p>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--{% endfor %}-->
+<!--</div>-->
