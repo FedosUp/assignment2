@@ -92,22 +92,7 @@ if input('Full deployment? [y/n]') == 'y':
     os.remove('.\OpenSky\settings.py')
     os.rename('.\OpenSky\settings2.py', '.\OpenSky\settings.py')
 
-
-    # with open('.\OpenSky\settings.py', 'r+') as inp:
-    #     for line in inp:
-    #         line = line.replace("'USER': 'Sergei'", f"'USER': '{user}'") \
-    #             .replace("'PASSWORD': ''", f"'PASSWORD': '{password}'") \
-    #             .replace("'HOST': 'localhost'",
-    #                      f"'HOST': '{host}'") \
-    #             .replace("'NAME': 'opensky'", f"'NAME': '{db_name}'")
-    #         inp.write(line)
-    # #Внесение изменений в .\airplanes\accumulation.py
-    # with open(r'.\airplanes\accumulation.py', 'r+') as inp:
-    #     for line in inp:
-    #         line = line.replace("user=''", f"user='{user}'") \
-    #             .replace("password=''", f"password='{password}'") \
-    #             .replace("host='localhost'",
-    #                      f"host='{host}'") \
-    #             .replace("database=''", f"database='{db_name}'")
+with open('test.log', 'wb') as out, open('test-error.log', 'wb') as err:
+    os.system("manage.py runserver --noreload")
 
 
