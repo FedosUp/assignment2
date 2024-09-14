@@ -13,10 +13,10 @@ while True:
     print(f'start while accum {now}')
     api = OpenSkyApi()
 
-    # необходимо ввести user  и password
+    
     cnx = mysql.connector.connect(user='', password='',
-                                  host='127.0.0.1',
-                                  database='opensky')
+                                  host='localhost',
+                                  database='')
 
     cursor = cnx.cursor()
 
