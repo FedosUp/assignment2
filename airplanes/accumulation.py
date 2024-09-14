@@ -3,7 +3,7 @@ from opensky_api import OpenSkyApi
 import mysql.connector
 import time
 import datetime
-import manage
+
 
 
 delay = 300 # количество секунд, через которое обновляются данные базы
